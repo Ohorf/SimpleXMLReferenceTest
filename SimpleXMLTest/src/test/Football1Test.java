@@ -10,8 +10,8 @@ import java.io.IOException;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
-import org.simpleframework.xml.strategy.CycleStrategy;
 import org.simpleframework.xml.strategy.Strategy;
+import org.simpleframework.xml.strategy.TwoPathCycleStrategy;
 
 import foo.Football;
 
@@ -27,8 +27,8 @@ public class Football1Test {
 		outFile.delete();
 		BufferedInputStream in = new BufferedInputStream(new FileInputStream(inFile));
 		BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(outFile));
-//		Strategy strategy = new TwoPathCycleStrategy("MID", "MREF");
-		Strategy strategy = new CycleStrategy("MID", "MREF");
+		Strategy strategy = new TwoPathCycleStrategy("MID", "MREF");
+//		Strategy strategy = new CycleStrategy("MID", "MREF");
 		
 		Serializer serializer = new Persister(strategy);
 		try {
